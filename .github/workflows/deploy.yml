@@ -38,7 +38,7 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Install dependencies
-        run: pip install "mkdocs-material>=9.5.0,<2.0.0" mkdocs-git-revision-date-localized-plugin
+        run: pip install mkdocs-material==9.7.6 mkdocs-git-revision-date-localized-plugin==1.2.0
 
       - name: Build MkDocs site
         run: mkdocs build
