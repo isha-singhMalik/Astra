@@ -1,0 +1,100 @@
+site_name: ASTRA — API Security Threat & Risk Atlas
+site_description: A structured, community-driven threat matrix for API security. Protocol-native. Detection-first. Breach-mapped.
+site_url: https://isha-singhmalik.github.io/Astra
+repo_url: https://github.com/isha-singhMalik/Astra
+repo_name: isha-singhMalik/Astra
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.action.edit
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: date
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Matrix:
+    - Overview: matrix.md
+    - Tactics:
+      - Reconnaissance: tactics/reconnaissance.md
+      - Authentication Abuse: tactics/authentication-abuse.md
+      - Authorization Failure: tactics/authorization-failure.md
+      - Exfiltration: tactics/exfiltration.md
+      - Impact: tactics/impact.md
+  - Techniques:
+    - Reconnaissance:
+      - ASTRA-REC-001 — Endpoint enumeration: techniques/reconnaissance/ASTRA-REC-001.md
+      - ASTRA-REC-002 — OpenAPI spec discovery: techniques/reconnaissance/ASTRA-REC-002.md
+      - ASTRA-REC-003 — GraphQL introspection: techniques/reconnaissance/ASTRA-REC-003.md
+    - Authentication Abuse:
+      - ASTRA-AUTH-001 — JWT none algorithm: techniques/authentication-abuse/ASTRA-AUTH-001.md
+      - ASTRA-AUTH-002 — OAuth token leakage: techniques/authentication-abuse/ASTRA-AUTH-002.md
+      - ASTRA-AUTH-003 — API key stuffing: techniques/authentication-abuse/ASTRA-AUTH-003.md
+    - Authorization Failure:
+      - ASTRA-AUTHZ-001 — BOLA / IDOR: techniques/authorization-failure/ASTRA-AUTHZ-001.md
+      - ASTRA-AUTHZ-002 — BFLA: techniques/authorization-failure/ASTRA-AUTHZ-002.md
+      - ASTRA-AUTHZ-003 — Mass assignment: techniques/authorization-failure/ASTRA-AUTHZ-003.md
+    - Exfiltration:
+      - ASTRA-EXFIL-001 — Excessive data exposure: techniques/exfiltration/ASTRA-EXFIL-001.md
+      - ASTRA-EXFIL-002 — Pagination abuse: techniques/exfiltration/ASTRA-EXFIL-002.md
+    - Impact:
+      - ASTRA-IMPACT-001 — Resource exhaustion: techniques/impact/ASTRA-IMPACT-001.md
+      - ASTRA-IMPACT-002 — Injection via API: techniques/impact/ASTRA-IMPACT-002.md
+      - ASTRA-IMPACT-003 — Business logic abuse: techniques/impact/ASTRA-IMPACT-003.md
+  - Detection Rules: detection-rules.md
+  - Breach Mappings: breach-mappings.md
+  - White Paper: whitepaper.md
+  - Contributing: contributing.md
+  - Changelog: changelog.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/isha-singhMalik/Astra
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/ishasinghmalik/
+    - icon: fontawesome/brands/twitter
+      link: https://x.com/ishamalik2427
+
+copyright: Copyright &copy; 2025 Isha Singh Malik — CC BY 4.0

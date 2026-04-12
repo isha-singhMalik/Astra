@@ -1,0 +1,54 @@
+title: ASTRA-EXFIL-001 — Excessive Data Exposure via API Response
+id: d4e5f6a7-b8c9-0123-defa-234567890123
+status: experimental
+description: Detects API responses containing sensitive field names that should not be exposed to clients, indicating excessive data exposure
+references:
+  - https://owasp.org/API-Security/editions/2023/en/0xa3-broken-object-property-level-authorization/
+  - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/exfiltration/ASTRA-EXFIL-001.md
+author: ASTRA Framework Contributors
+date: 2025-04-10
+modified: 2025-04-10
+tags:
+  - astra.ASTRA-EXFIL-001
+  - attack.collection
+  - attack.exfiltration
+logsource:
+  category: webserver
+  product: api_gateway
+detection:
+  selection_sensitive_response:
+    cs-uri-stem|contains:
+      - '/api/'
+    sc-response-body|contains:
+      - 'password_hash'
+      - 'hashed_password'
+      - 'password_digest'
+      - 'secret_key'
+      - 'api_secret'
+      - 'internal_flag'
+      - 'admin_note'
+      - 'fraud_score'
+      - 'is_banned'
+      - 'stripe_customer_id'
+      - 'ssn'
+      - 'tax_id'
+  selection_large_response:
+    cs-uri-stem|contains:
+      - '/users/'
+      - '/accounts/'
+      - '/profile'
+    sc-bytes|gte: 10000
+  condition: selection_sensitive_response
+
+falsepositives:
+  - Internal admin tooling that legitimately needs full objects
+  - Audit log endpoints (should be separately secured)
+
+level: high
+
+fields:
+  - c-ip
+  - cs-uri-stem
+  - cs-authorization
+  - sc-bytes
+  - sc-status

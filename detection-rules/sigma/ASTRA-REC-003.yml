@@ -1,0 +1,52 @@
+title: ASTRA-REC-003 — GraphQL Introspection Query Detection
+id: c3d4e5f6-a7b8-9012-cdef-123456789012
+status: stable
+description: Detects GraphQL introspection queries targeting __schema or __type, used by attackers to map the full API surface
+references:
+  - https://graphql.org/learn/introspection/
+  - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/reconnaissance/ASTRA-REC-003.md
+author: ASTRA Framework Contributors
+date: 2025-04-10
+modified: 2025-04-10
+tags:
+  - astra.ASTRA-REC-003
+  - attack.reconnaissance
+  - attack.discovery
+logsource:
+  category: webserver
+  product: api_gateway
+detection:
+  selection_endpoint:
+    cs-uri-stem|contains:
+      - '/graphql'
+      - '/api/graphql'
+      - '/v1/graphql'
+      - '/query'
+  selection_introspection:
+    cs-request-body|contains:
+      - '__schema'
+      - '__type('
+      - 'IntrospectionQuery'
+      - '__typename'
+  selection_tools:
+    cs-user-agent|contains:
+      - 'graphw00f'
+      - 'InQL'
+      - 'graphql-introspection'
+      - 'Altair'
+      - 'GraphiQL'
+  condition: (selection_endpoint and selection_introspection) or selection_tools
+
+falsepositives:
+  - Legitimate internal developer tooling (GraphiQL, Altair) in dev/staging environments
+  - CI pipeline schema validation queries
+
+level: medium
+
+fields:
+  - c-ip
+  - cs-uri-stem
+  - cs-method
+  - cs-user-agent
+  - sc-bytes
+  - sc-status

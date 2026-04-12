@@ -1,0 +1,73 @@
+name: Validate ASTRA Contribution
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'docs/techniques/**'
+      - 'detection-rules/sigma/**'
+
+jobs:
+  validate-technique:
+    runs-on: ubuntu-latest
+    name: Validate technique format
+
+    steps:
+      - name: Checkout PR
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install validation deps
+        run: pip install pyyaml
+
+      - name: Run technique validator
+        run: python scripts/validate_technique.py
+
+      - name: Run Sigma rule validator
+        run: python scripts/validate_sigma.py
+
+      - name: Check README matrix updated
+        run: python scripts/check_readme_updated.py
+
+  lint-markdown:
+    runs-on: ubuntu-latest
+    name: Lint markdown
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run markdownlint
+        uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: |
+            docs/**/*.md
+            !docs/index.md
+
+  build-check:
+    runs-on: ubuntu-latest
+    name: Verify site builds
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install MkDocs
+        run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin
+
+      - name: Build site (strict mode)
+        run: mkdocs build --strict

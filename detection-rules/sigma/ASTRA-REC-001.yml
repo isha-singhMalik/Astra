@@ -1,0 +1,38 @@
+title: ASTRA-REC-001 — API Endpoint Enumeration via JavaScript Scraping
+id: f6a7b8c9-d0e1-2345-fabc-456789012345
+status: experimental
+description: Detects rapid bulk downloading of JavaScript bundle files from a single IP, indicating automated API endpoint scraping
+references:
+  - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/reconnaissance/ASTRA-REC-001.md
+author: ASTRA Framework Contributors
+date: 2025-04-10
+tags:
+  - astra.ASTRA-REC-001
+  - attack.reconnaissance
+logsource:
+  category: webserver
+  product: api_gateway
+detection:
+  selection_js_bundles:
+    cs-uri-stem|endswith:
+      - '.js'
+      - '.js.map'
+    cs-method: 'GET'
+  filter_normal:
+    cs-referer|contains:
+      - 'target.example.com'
+  condition: selection_js_bundles and not filter_normal
+  timeframe: 30s
+  aggregation: count() by c-ip > 5
+
+falsepositives:
+  - CDN prefetch / preload requests
+  - Legitimate performance monitoring tools
+
+level: low
+
+fields:
+  - c-ip
+  - cs-uri-stem
+  - cs-user-agent
+  - cs-referer

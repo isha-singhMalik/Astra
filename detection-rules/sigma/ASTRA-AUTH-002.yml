@@ -1,0 +1,29 @@
+title: ASTRA-AUTH-002 — Detection Rule
+id: 
+status: experimental
+description: Detection rule for ASTRA-AUTH-002. See technique page for full context.
+references:
+  - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/
+author: ASTRA Framework Contributors
+date: 2025-04-10
+tags:
+  - astra.ASTRA-AUTH-002
+  - attack.initial_access
+logsource:
+  category: webserver
+  product: api_gateway
+detection:
+  selection:
+    cs-uri-stem|contains: '/api/'
+  condition: selection
+
+falsepositives:
+  - Legitimate API usage — tune thresholds per environment
+
+level: medium
+
+fields:
+  - c-ip
+  - cs-uri-stem
+  - cs-method
+  - sc-status

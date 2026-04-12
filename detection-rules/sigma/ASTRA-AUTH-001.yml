@@ -1,0 +1,38 @@
+title: ASTRA-AUTH-001 — JWT None Algorithm Bypass Detection
+id: b2c3d4e5-f6a7-8901-bcde-f12345678901
+status: stable
+description: Detects JWT tokens using the 'none' algorithm in Authorization headers, indicating a potential authentication bypass attempt
+references:
+  - https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/
+  - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/authentication-abuse/ASTRA-AUTH-001.md
+author: ASTRA Framework Contributors
+date: 2025-04-10
+modified: 2025-04-10
+tags:
+  - astra.ASTRA-AUTH-001
+  - attack.defense_evasion
+  - attack.credential_access
+logsource:
+  category: webserver
+  product: api_gateway
+detection:
+  selection_none_alg:
+    cs-authorization|contains:
+      - 'eyJhbGciOiJub25lIi'
+      - 'eyJhbGciOiJOT05FIi'
+      - 'eyJhbGciOiJOb25lIi'
+  selection_two_segment:
+    cs-authorization|re: '^Bearer [A-Za-z0-9_-]+\.[A-Za-z0-9_-]+\.$'
+  condition: selection_none_alg or selection_two_segment
+
+falsepositives:
+  - None expected — no legitimate JWT should use alg:none in production
+
+level: critical
+
+fields:
+  - c-ip
+  - cs-authorization
+  - cs-uri-stem
+  - cs-method
+  - sc-status

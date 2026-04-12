@@ -1,0 +1,46 @@
+title: ASTRA-REC-002 — OpenAPI / Swagger Specification Discovery
+id: a7b8c9d0-e1f2-3456-abcd-567890123456
+status: stable
+description: Detects requests to well-known OpenAPI and Swagger specification paths indicating API surface reconnaissance
+references:
+  - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/reconnaissance/ASTRA-REC-002.md
+author: ASTRA Framework Contributors
+date: 2025-04-10
+tags:
+  - astra.ASTRA-REC-002
+  - attack.reconnaissance
+  - attack.discovery
+logsource:
+  category: webserver
+  product: api_gateway
+detection:
+  selection_spec_paths:
+    cs-uri-stem|contains:
+      - 'swagger.json'
+      - 'swagger.yaml'
+      - 'swagger.yml'
+      - 'openapi.json'
+      - 'openapi.yaml'
+      - 'openapi.yml'
+      - 'api-docs'
+      - 'api_docs'
+      - 'swagger-ui'
+      - 'redoc'
+      - 'swagger/index'
+      - 'v1/api-docs'
+      - 'v2/api-docs'
+      - 'v3/api-docs'
+  condition: selection_spec_paths
+
+falsepositives:
+  - Internal developer tooling in non-production environments
+  - Automated API testing pipelines
+
+level: medium
+
+fields:
+  - c-ip
+  - cs-uri-stem
+  - cs-user-agent
+  - sc-status
+  - sc-bytes

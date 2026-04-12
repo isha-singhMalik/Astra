@@ -1,0 +1,40 @@
+title: ASTRA-AUTHZ-001 — Broken Object Level Authorization (BOLA) Detection
+id: a1b2c3d4-e5f6-7890-abcd-ef1234567890
+status: experimental
+description: Detects potential BOLA/IDOR attacks via sequential or high-volume object ID enumeration in API requests
+references:
+  - https://owasp.org/API-Security/editions/2023/en/0xa1-broken-object-level-authorization/
+  - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/authorization-failure/ASTRA-AUTHZ-001.md
+author: ASTRA Framework Contributors
+date: 2025-04-10
+modified: 2025-04-10
+tags:
+  - astra.ASTRA-AUTHZ-001
+  - attack.initial_access
+  - attack.credential_access
+logsource:
+  category: webserver
+  product: api_gateway
+detection:
+  selection_path:
+    cs-uri-stem|re: '\/api\/.*\/(users|accounts|orders|profiles|documents|records)\/\d+'
+  selection_high_volume:
+    c-ip: '*'
+  timeframe: 60s
+  condition: selection_path
+  aggregation: count() by c-ip, cs-authorization > 50
+
+falsepositives:
+  - Legitimate batch processing systems
+  - Internal admin tools performing bulk operations
+  - Load testing environments
+
+level: high
+
+fields:
+  - c-ip
+  - cs-authorization
+  - cs-uri-stem
+  - cs-method
+  - sc-status
+  - time-taken

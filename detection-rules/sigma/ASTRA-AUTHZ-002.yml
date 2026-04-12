@@ -1,0 +1,56 @@
+title: ASTRA-AUTHZ-002 — Broken Function Level Authorization (BFLA) Detection
+id: e5f6a7b8-c9d0-1234-efab-345678901234
+status: stable
+description: Detects non-admin authenticated tokens accessing privileged API endpoints, indicating potential BFLA exploitation
+references:
+  - https://owasp.org/API-Security/editions/2023/en/0xa5-broken-function-level-authorization/
+  - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/authorization-failure/ASTRA-AUTHZ-002.md
+author: ASTRA Framework Contributors
+date: 2025-04-10
+modified: 2025-04-10
+tags:
+  - astra.ASTRA-AUTHZ-002
+  - attack.privilege_escalation
+  - attack.lateral_movement
+logsource:
+  category: webserver
+  product: api_gateway
+detection:
+  selection_admin_path:
+    cs-uri-stem|contains:
+      - '/admin/'
+      - '/internal/'
+      - '/manage/'
+      - '/ops/'
+      - '/superuser/'
+      - '/staff/'
+  selection_privileged_methods:
+    cs-method:
+      - 'DELETE'
+      - 'PATCH'
+      - 'PUT'
+    cs-uri-stem|contains:
+      - '/users/'
+      - '/accounts/'
+      - '/roles/'
+      - '/permissions/'
+  filter_admin_token:
+    cs-authorization|contains:
+      - '"role":"admin"'
+      - '"roles":["admin'
+      - '"is_admin":true'
+  condition: (selection_admin_path or selection_privileged_methods) and not filter_admin_token
+
+falsepositives:
+  - Service accounts with elevated permissions not using standard role claims
+  - Legacy auth systems that encode permissions differently
+
+level: high
+
+fields:
+  - c-ip
+  - cs-uri-stem
+  - cs-method
+  - cs-authorization
+  - sc-status
+  - time-taken
