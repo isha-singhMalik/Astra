@@ -6,8 +6,8 @@ references:
   - https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/
   - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/authentication-abuse/ASTRA-AUTH-001.md
 author: ASTRA Framework Contributors
-date: 2025-04-10
-modified: 2025-04-10
+date: 2026-04-10
+modified: 2026-04-10
 tags:
   - astra.ASTRA-AUTH-001
   - attack.defense_evasion

@@ -6,7 +6,7 @@ ASTRA uses [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [1.0.0] — 2025-04-10
+## [1.0.0] — 2026-04-10
 
 ### Added
 - Initial release of the ASTRA framework

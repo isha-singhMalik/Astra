@@ -5,7 +5,7 @@ description: Detects requests to well-known OpenAPI and Swagger specification pa
 references:
   - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/reconnaissance/ASTRA-REC-002.md
 author: ASTRA Framework Contributors
-date: 2025-04-10
+date: 2026-04-10
 tags:
   - astra.ASTRA-REC-002
   - attack.reconnaissance

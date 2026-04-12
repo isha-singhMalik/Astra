@@ -5,7 +5,7 @@ description: Detection rule for ASTRA-AUTH-002. See technique page for full cont
 references:
   - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/
 author: ASTRA Framework Contributors
-date: 2025-04-10
+date: 2026-04-10
 tags:
   - astra.ASTRA-AUTH-002
   - attack.initial_access

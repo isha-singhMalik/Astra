@@ -6,8 +6,8 @@ references:
   - https://owasp.org/API-Security/editions/2023/en/0xa5-broken-function-level-authorization/
   - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/authorization-failure/ASTRA-AUTHZ-002.md
 author: ASTRA Framework Contributors
-date: 2025-04-10
-modified: 2025-04-10
+date: 2026-04-10
+modified: 2026-04-10
 tags:
   - astra.ASTRA-AUTHZ-002
   - attack.privilege_escalation

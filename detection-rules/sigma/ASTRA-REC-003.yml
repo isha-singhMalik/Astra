@@ -6,8 +6,8 @@ references:
   - https://graphql.org/learn/introspection/
   - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/reconnaissance/ASTRA-REC-003.md
 author: ASTRA Framework Contributors
-date: 2025-04-10
-modified: 2025-04-10
+date: 2026-04-10
+modified: 2026-04-10
 tags:
   - astra.ASTRA-REC-003
   - attack.reconnaissance

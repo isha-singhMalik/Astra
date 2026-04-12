@@ -4,7 +4,7 @@ See the full [CHANGELOG.md](https://github.com/isha-singhMalik/Astra/blob/main/C
 
 ## Current version: 1.0.0
 
-Released: 2025-04-10
+Released: 2026-04-10
 
 ### Added
 - 5 tactic categories: Reconnaissance, Authentication Abuse, Authorization Failure, Exfiltration, Impact

@@ -5,7 +5,7 @@ description: Detects rapid bulk downloading of JavaScript bundle files from a si
 references:
   - https://github.com/isha-singhMalik/astra/blob/main/docs/techniques/reconnaissance/ASTRA-REC-001.md
 author: ASTRA Framework Contributors
-date: 2025-04-10
+date: 2026-04-10
 tags:
   - astra.ASTRA-REC-001
   - attack.reconnaissance
