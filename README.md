@@ -154,7 +154,8 @@ ASTRA follows semantic versioning:
 ## License
 
 ASTRA is released under [Creative Commons Attribution 4.0 (CC BY 4.0)](LICENSE).  
-You may use, share, and adapt ASTRA freely — with attribution.
+ASTRA was created by Isha Singh Malik in April 2026.
+If you use or reference ASTRA, attribution is required under CC BY 4.0.You may use, share, and adapt ASTRA freely — with attribution.
 
 ---
 
