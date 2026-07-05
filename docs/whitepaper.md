@@ -1,17 +1,38 @@
 # ASTRA White Paper v1.0
 
-The full ASTRA white paper is available as a PDF download.
+**Released: April 2026**
 
-**[Download ASTRA White Paper v1.0 (PDF)](whitepaper.md)**
+The official ASTRA White Paper is now available for download.
 
----
-
-## Abstract
-
-ASTRA (API Security Threat & Risk Atlas) is an open, community-driven threat matrix for API security. It addresses a critical gap in the existing threat intelligence landscape: while MITRE ATT&CK provides broad enterprise coverage and the OWASP API Security Top 10 offers a ranked list of common vulnerabilities, neither provides a structured, protocol-native, detection-ready knowledge base of API-specific attack techniques mapped to real-world incidents.
-
-This white paper introduces the ASTRA framework, its methodology, the v1.0 threat matrix, five detailed breach case studies, and practical guidance for using ASTRA in API threat modelling and security operations.
+[Download ASTRA White Paper v1.0 (PDF)](../ASTRA_WhitePaper_v1.0.pdf){ .md-button .md-button--primary }
 
 ---
 
-*White paper PDF coming soon. [Watch the repo](https://github.com/isha-singhMalik/astra) for the release.*
+## What the white paper covers
+
+1. Introduction — the gap ASTRA fills
+2. Problem statement — why MITRE and OWASP API Top 10 are insufficient
+3. Methodology — how techniques are selected, scored, and validated
+4. Full ASTRA v1.0 threat matrix — all 14 techniques
+5. Five breach case studies — Optus, Twitter, Peloton, Auth0, HackerOne
+6. Detection engineering — Sigma rule corpus and deployment guidance
+7. Using ASTRA in practice — threat modelling, pentesting, detection
+8. Roadmap — v1.1 and v2.0 planned features
+
+---
+
+## Citation
+
+If you reference ASTRA in research or publications:
+
+Singh Malik, I. (2026). *ASTRA — API Security Threat & Risk Atlas:
+White Paper v1.0*. github.com/isha-singhMalik/Astra
+
+---
+
+## Author
+
+**Isha Singh Malik**
+[LinkedIn](https://www.linkedin.com/in/ishasinghmalik/) ·
+[Twitter / X](https://x.com/ishamalik2427) ·
+[GitHub](https://github.com/isha-singhMalik/Astra)
