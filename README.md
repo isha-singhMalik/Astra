@@ -168,3 +168,6 @@ Built and maintained by **Isha Singh Malik**.
 ---
 
 *ASTRA is an independent open-source project. Not affiliated with MITRE Corporation.*
+
+> 📄 **White Paper v1.0 is live** —
+> [Download the ASTRA White Paper](ASTRA_WhitePaper_v1.0.pdf)
