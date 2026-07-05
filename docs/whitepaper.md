@@ -4,7 +4,7 @@
 
 The official ASTRA White Paper is now available for download.
 
-[Download ASTRA White Paper v1.0 (PDF)](https://github.com/isha-singhMalik/Astra/raw/main/ASTRA_WhitePaper_v1.0.pdf){ .md-button .md-button--primary }
+[Download ASTRA White Paper v1.0 (PDF)](https://github.com/isha-singhMalik/Astra/raw/main/ASTRA_WhitePaper_v1.pdf){ .md-button .md-button--primary }
 
 ---
 
